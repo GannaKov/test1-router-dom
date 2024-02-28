@@ -7,20 +7,24 @@ import Root, { loader as rootLoader } from "./routes/Root";
 import User, { loader as userLoader } from "./routes/User";
 import UserSharedLayout from "./routes/UserSharedLayout";
 import Address from "./routes/Address";
+import SharedLayout from "./routes/SharedLayout";
 //, { loader as userLoader }
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
-    loader: rootLoader,
-  },
-  {
-    path: "/users/:userId",
-    element: <UserSharedLayout />,
-    // loader: userLoader,
+    element: <SharedLayout />,
+
     children: [
-      { index: true, element: <User />, loader: userLoader },
-      { path: "address", element: <Address />, loader: userLoader },
+      { index: true, element: <Root />, loader: rootLoader },
+      {
+        path: "/users/:userId",
+        element: <UserSharedLayout />,
+        // loader: userLoader,
+        children: [
+          { index: true, element: <User />, loader: userLoader },
+          { path: "address", element: <Address />, loader: userLoader },
+        ],
+      },
     ],
   },
 ]);

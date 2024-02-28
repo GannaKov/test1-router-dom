@@ -13,18 +13,17 @@ const Root = () => {
 
   return (
     <div>
-      <header>
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">List</NavLink>
-            </li>
-            <li>
-              <NavLink to="">About</NavLink>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      {/* <nav>
+        <ul>
+          <li>
+            <NavLink to="/">Info</NavLink>
+          </li>
+          <li>
+            <NavLink to="address">Address</NavLink>
+          </li>
+        </ul>
+      </nav> */}
+
       {users ? (
         <ul>
           {users.map((user) => (
