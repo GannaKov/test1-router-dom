@@ -4,10 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 //
 import Root, { loader as rootLoader } from "./routes/Root";
-import User from "./routes/User";
+import User, { loader as userLoader } from "./routes/User";
 import UserSharedLayout from "./routes/UserSharedLayout";
 import Address from "./routes/Address";
-
+//, { loader as userLoader }
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,9 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/users/:userId",
     element: <UserSharedLayout />,
+    // loader: userLoader,
     children: [
-      { index: true, element: <User /> },
-      { path: "address", element: <Address /> },
+      { index: true, element: <User />, loader: userLoader },
+      { path: "address", element: <Address />, loader: userLoader },
     ],
   },
 ]);
