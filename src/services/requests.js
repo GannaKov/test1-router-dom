@@ -5,14 +5,21 @@ const instance = axios.create({ baseURL: BASEURL });
 
 //https://jsonplaceholder.typicode.com/users
 export async function getAllUsers() {
-  const { data } = await instance.get("/users");
-
-  return data;
+  try {
+    const { data } = await instance.get("/users");
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 //https://jsonplaceholder.typicode.com/users/1
 export async function getUserById(id) {
-  const { data } = await instance.get(`/users/${id}`);
-  console.log("data in requests", data);
-  return data;
+  try {
+    const { data } = await instance.get(`/users/${id}`);
+
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
 }
